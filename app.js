@@ -11,6 +11,17 @@ function adicionarAmigo() {
   } else {
     amigos.push(nome)
     input.value = ""
+    atualizarLista()
   }
   input.focus()
+}
+
+function atualizarLista() {
+  nomeLista.innerHTML = null
+
+  for(nome of amigos) {
+    const li = document.createElement("li")
+    li.textContent = nome
+    nomeLista.appendChild(li)
+  }
 }
