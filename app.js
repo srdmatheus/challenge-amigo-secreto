@@ -16,12 +16,30 @@ function adicionarAmigo() {
   input.focus()
 }
 
+function createLi(nome) {
+  const li = document.createElement("li")
+  li.textContent = nome
+  return li
+}
+
 function atualizarLista() {
   nomeLista.innerHTML = null
 
   for(nome of amigos) {
-    const li = document.createElement("li")
-    li.textContent = nome
-    nomeLista.appendChild(li)
+    const amigoItem = createLi(nome)
+    nomeLista.appendChild(amigoItem)
   }
+}
+
+function sortearAmigo() {
+  if(amigos.length === 0) {
+    return alert("Lista vazia.")
+  }
+
+  const indiceAleatorio = Math.floor(Math.random() * amigos.length)
+  const amigoSorteado = amigos[indiceAleatorio]
+  const amigoSorteadoItem = createLi(amigoSorteado)
+
+  resultadoLista.innerHTML = null
+  resultadoLista.appendChild(amigoSorteadoItem)
 }
